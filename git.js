@@ -45,7 +45,7 @@ const createstatusbutton = (todo) => {
   const createstatusBtn = document.createElement("button");
   createstatusBtn.innerText = todo.status;
   createstatusBtn.addEventListener("click", () => {
-    if ((todos.status = "作業中")) {
+    if ((todo.status == "作業中")) {
       todo.status = "完了";
     } else {
       todo.status = "作業中";
@@ -86,4 +86,4 @@ const radioChange = () => {
     });
     return displayTodos(filterdone);
   }
-}
+} 
