@@ -17,7 +17,7 @@ const displayTodos = (selecttodos) => {
     createTr.appendChild(createComment); 
     createTr.appendChild(status_td); 
     status_td.append(createstatusbutton(todo)); 
-    status_td.append(createremoveButton());
+    status_td.append(createremoveButton(createTr));
     addvalue.appendChild(createTr);
     text.value = "";
   });
@@ -45,7 +45,7 @@ const createstatusbutton = (todo) => {
   const createstatusBtn = document.createElement("button");
   createstatusBtn.innerText = todo.status;
   createstatusBtn.addEventListener("click", () => {
-    if ((todo.status == "作業中")) {
+    if ((todo.status === "作業中")) {
       todo.status = "完了";
     } else {
       todo.status = "作業中";
@@ -58,8 +58,9 @@ const createstatusbutton = (todo) => {
 const createremoveButton = (index) => {
   const createremoveBtn = document.createElement("button");
   createremoveBtn.textContent = "削除";
+  const num = index.rowIndex-1;
   createremoveBtn.addEventListener("click", () => {
-    todos.splice(index, 1);
+    todos.splice(num, 1);
     radioChange();
     todos.reduce((Idnum, todo) => (todo.taskid = Idnum + 1), -1);
     radioChange();
